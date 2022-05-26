@@ -1,0 +1,88 @@
+.filter-category .filtered-bar .product-table {
+  margin-top: 26px;
+}
+
+#productCategoriesTab {
+  margin-bottom: 20px;
+}
+
+#productCategoriesTabContent {
+  margin-bottom: 10px;
+}
+
+.specification-wrap {
+  margin-top: 40px;
+}
+
+.without-underline:before {
+  content: none;
+}
+
+.specification-table.export-table {
+  margin-bottom: 40px;
+}
+
+.ui-autocomplete {
+  z-index: 10000 !important;
+}
+
+.form-group .error {
+  color: red;
+}
+
+.form-group .form-control.error {
+  border: 2px solid red;
+}
+
+.job-description {
+  padding-left: 1.5rem!important;
+}
+
+.product-category-section {
+  padding: 0px;
+}
+
+.quantity-div {
+  min-width: 100px;
+}
+.custom-section {
+  padding: 0px 0px;
+}
+.success-msg {
+  color: green;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.subscribe-res.success {
+  color: #02e002;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.subscribe-res.error {
+  color: #ef3457;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.error {
+  color: red;
+}
+.contact-us-label {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.pagination-div {
+  width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+  margin-bottom: 5px;
+}
+.dropdown-item:focus {
+  background-color: transparent;
+}

@@ -1,0 +1,7 @@
+﻿Sr. no,Product Photo,Product Category,Product Sub-Category,Manufacturer Part No,Short Description ,Manufacturer Name,Available packaging,Availabliity,Lead Time,Qty Min,Qty Multiple,ROHS,ECCM,HSCode,
+,Link,Lookup 'Product Category',Lookup 'Product Sub-category',Alpha-Numerical,Alpha-Numerical,Lookup 'Manufacturers',Drop Down,In Stock' - Numerical/ Lead-time,Numerical 'weeks',Numerical,Numerical,Yes / No,Alpha-Numerical,Lookup from 'Product Category',
+1,https://www.mouser.com/images/koaspeer/images/LT73.jpg,Passive Components,Resistors,RK73H1ETTP22R1F,Thick Film Resistors - SMD 0.1watt 22.1ohms 1%,KOA Speer,Reel,In Stock' 10000,12 'weeks',10000,10000,Yes,EAR99,8533,
+2,https://www.mouser.com/images/knowlescorporation/images/JZ_series_DSL.jpg,Passive Components,Capacitors,JZ060,Trimmer / Variable Capacitors 2.0 - 6.0pF 110volts,Knowles Voltronics,Tray,In Stock' 1000,12 'weeks',1,1,Yes,EAR99,853224,
+3,https://www.mouser.com/images/tycoelectronics/images/prcpc08c.jpg,Connectors,Circular Connectors,206708-1,Standard Circular Connector PLUG 9 POSITION shell size 13,TE Connectivity / AMP,Bulk,In Stock' 5000,25 'weeks',2,1,Yes,EAR99,85369090,
+,,,,,,,Tube,,,,,,,,
+,,,,,,,,,,,,,,,
