@@ -159,7 +159,7 @@
                                                             </li>
                                                         </ul>
                                                         <p>{{ $news->description}}</p>
-                                                        <a href="">Learn more <img class="svgImg" src="{{asset('assets/frontend/assets/images/left-aerrow.svg')}}" alt="Left"></a>
+                                                        <a href="{{ route('news',$news->id)}}">Learn more <img class="svgImg" src="{{asset('assets/frontend/assets/images/left-aerrow.svg')}}" alt="Left"></a>
                                                     </div>
                                                 </div>
                                                 @endforeach

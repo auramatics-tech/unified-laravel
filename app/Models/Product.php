@@ -39,4 +39,18 @@ class Product extends Model{
     {
         return $this->hasOne(Manufacturer::class,'id','manufacturer_id');
     }
+
+    public function sub_category()
+    {
+        return $this->hasOne(ProductSubCategory::class,'id','products_sub_category_id');
+    }
+
+    public function category()
+    {
+        return $this->hasOne(ProductCategory::class,'id','product_category_id');
+    }
+    public function main_category()
+    {
+        return $this->hasOne(MainCategory::class,'id','group_category');
+    }
 }

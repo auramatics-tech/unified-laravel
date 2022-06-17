@@ -37,7 +37,7 @@
                                 <p class="success-msg">Contact Details successfully saved.</p>
                             {% endif %}
                             {{app.session.set('success', 0)}}  --}}
-                            <form id="contact-us" method="post" class="row" action="{{route('contact_page_form')}}">
+                            <form id="contact-us" method="post" class="row" action="{{route('contact_page_form')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="col-xs-12 col-sm-12 col-md-6">
                                 <div class="form-group">

@@ -2,19 +2,7 @@
 @section('content')
 	<!-- Main Content -->
     <main>
-        <!-- Inner Hero Section -->
-        {{-- <section class="inner-hero-section no-image no-overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="text-uppercase text-primary">Quote form</h1>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
-        <!-- End Inner Hero Section -->
 
-        <!-- Quotes Section -->
         <section class="section">
             <div class="container">
                 <div class="row">
@@ -25,7 +13,8 @@
                             </h2>
                         </div>
                     </div>
-					<form method="POST" action="{{url('/')}}/submit" class="" id="cart-form" enctype="multipart/form-data">
+					<form method="POST" action="{{route('submit')}}" class="" id="cart-form" enctype="multipart/form-data">
+                    @csrf
                     <div class="col-md-12">
                         <div class="rfw-form mt-4">
                             <h4>1. Parts List/upload</h4>
@@ -41,42 +30,34 @@
                                                         <th>Quantity*</th>
                                                         <th>Price</th>
                                                         <th>Target Price</th>
-                                                        <!-- <th>Open For Cross Refrence </th> -->
                                                         <th>Remove</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                   {{-- @php echo"<pre>";print_r($products);die; @endphp --}}
-                                                    @if(count($products))
-                                                    @foreach($products as $key => $product)
+                                                    @if(count($session_products))
+                                                    @foreach($session_products as $key => $product)
+                                               
 														<tr class="product-listing">
 															<td>
 																<input type="text" class="form-control"
-																	placeholder="Part number" name="product[{{$key}}][name]" value="{{$product['name']}}" required>
+																	placeholder="Part number" name="product" value="@if(isset($product['name'])){{$product['name']}}@endif" >
 															</td>
 															<td>
 																<input type="text" class="form-control"
-																	placeholder="Manufacturer" name="product[{{$key}}][manufacture]"  value="{{$product['manufacture']}}" required>
+																	placeholder="Manufacturer" name="product[{{$key}}]['manufacture']"  value="@if(isset($product['manufacture'])){{$product['manufacture']}}@endif" >
 															</td>
 															<td>
-																<input type="hidden" class="item-price" name="product[{{$key}}][item_price]" value="{{isset( $product->item_price) }}">
-																<input type="number" min="1" class="form-control quantity" name="product[{{$key}}][qty]" placeholder="QTY" value="{{ $product['qty']}}" required>
+																<!-- <input type="hidden" class="form-control item-price" name="product[{{$key}}][item_price]" value="{{isset( $product->item_price) }}"> -->
+																<input type="number" min="1" class="form-control quantity" name="product[{{$key}}][qty]" placeholder="QTY" value="@if(isset($product['qty'])){{$product['qty']}}@endif" >
 															</td>
                                                             <td>
-                                                                <input type="text" readonly class=" form-control" name="product[{{$key}}][item_price]" value="{{ isset($product->item_price) }}" placeholder="Price" required>    
+                                                                <!-- <input type="text" readonly class=" form-control quantity" name="product[{{$key}}][item_price]" value="{{ isset($product->item_price) }}" placeholder="Price" required> -->
+                                                                <!-- <input type="number" min="1" class="form-control quantity" name="product[{{$key}}][item_price]" placeholder="Price"  value="@if(isset($product['item_price'])){{$product['item_price']}}@endif" >     -->
+                                                                <input type="text" readonly class=" form-control" name="product[{{$key}}][item_price]" value="@if(isset($product['item_price'])){{$product['item_price']}}@endif" placeholder="Price" required>    
                                                             </td>
 															<td>
-																<input type="text"  class="form-control final-price" name="product[{{$key}}][price]" placeholder="Target Price" value="{{ $product['price']}}" required>
+                                                                <input type="number" min="1" class="form-control final-price" name="product[{{$key}}][price]" placeholder="Target Price" value="@if(isset($product['price'])){{$product['price']}}@endif" >
 															</td>
-															{{-- <td align="center">
-																<div class="form-check">
-																	<div class="custom-control custom-checkbox">
-																		<input type="checkbox" data-id="{{ key}}" name="product[{{key}}][refrence]" class="custom-control-input"
-																			id="customCheck{{key}}">
-																		<label class="custom-control-label"
-																			for="customCheck{{key}}"></label>
-																	</div>
-															</td> --}}
 															<td>
 																<a href="javascript:;" class="remove-btn" data-id="{{ $key }}">
 																	<i class="far fa-times-circle"></i>
@@ -99,7 +80,6 @@
                                 
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-5">
-                                        {{-- <a href="#" class="btn btn-primary mr-5 mt-3">Add More Parts</a> --}}
                                         <div class="form-group mb-0 mr-5 mt-3">
                                             <label for="exampleFormControlFile1">Or Upload BOM</label>
                                             <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
@@ -107,50 +87,48 @@
                                         
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-7 btngroup-a-r">
-                                        <a href="javascript:void(0)" class="btn btn-primary mr-3 mt-3 save-sessions">Continue shopping</a>
+                                        <a href="{{route('product_list')}}" class="btn btn-primary mr-3 mt-3 save-sessions">Continue shopping</a>
                                         <a href="javascript:void(0);" class="btn btn-primary mt-3 add-part">+ Add a part</a>
 									</div>
                                 </div>
                                 </div>
-                            {{-- </form> --}}
                             <br />
                             <h4 class="mt-md-4"><span class="text-primary">Form 2:</span> Contact Information</h4>
                             <div class="mt-4 mb-5">
-                            {{-- <form action="" class="mt-4"> --}}
                                 <div class="row">
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <input type="text" name="first_name" class="form-control" placeholder="First Name*" Required="required">
+                                            <input type="text" name="first_name" class="form-control" placeholder="First Name*" >
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <input type="text" name="last_name" class="form-control" placeholder="Last Name*" Required="required">
+                                            <input type="text" name="last_name" class="form-control" placeholder="Last Name*" >
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <input type="text" name="country" class="form-control" placeholder="Country*" Required="required">
+                                            <input type="text" name="country" class="form-control" placeholder="Country*" >
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <input type="text" name="city" class="form-control" placeholder="City*" Required="required">
+                                            <input type="text" name="city" class="form-control" placeholder="City*" >
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <input type="email" name="email" class="form-control" placeholder="Email Address*" Required="required">
+                                            <input type="email" name="email" class="form-control" placeholder="Email Address*" >
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <input type="text" name="phone" class="form-control" placeholder="Phone Number*" Required="required">
+                                            <input type="text" name="phone" class="form-control" placeholder="Phone Number*" >
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <input type="text"name="company" class="form-control" placeholder="Company*" Required="required">
+                                            <input type="text"name="company" class="form-control" placeholder="Company*" >
                                         </div>
                                     </div>
                                 </div>
@@ -168,19 +146,18 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- </form> --}}
                         </div>
                     </div>
-                </div></form>
+                </div>
+            </form>
             </div>
         </section>
-        <!-- End Quotes Section -->
+        
     </main>
-    <!-- End Content -->
 
     <script>
         $(document).ready(function() {
-            var cart_item = "{{$productService->getCartValues}}";
+            var cart_item = "{{getCartValues()}}";
             $(document).on('click', '.remove-btn', function() {
 				var product_id = $(this).attr('data-id');
                 if(product_id == 'added-part') {
@@ -188,7 +165,7 @@
                 } else {
                     $.ajax({
 						url: '{{url('/')}}/remove/item/'+product_id,
-						type: 'POST',
+						type: 'get',
 						data: {},
 						contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 						success: function (response) {

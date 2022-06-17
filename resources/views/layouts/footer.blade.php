@@ -3,10 +3,7 @@
                 <div class="container">
                     <div class="subscribegroup">
                         <div class="col-md-12 d-md-flex">
-                            <!-- <div>
-                                <h2>YOU NEED PARTS, NOT EXCUSES</h2>
-                                <h2>Our team responds quickly to your requests, and gets to work finding your parts</h2>
-                            </div> -->
+
                             <h2>Subscribe for more information and resources</h2>
                             <div class="">
                                 <input type="email" name="email" class="form-control " aria-describedby="emailHelp" placeholder="Enter email" id="subscriber_email" style="border: 3px solid #dee2e6!important">
@@ -16,7 +13,7 @@
                             <div>
                                 <span class="subscribe-res"></span>
                             </div>
-                            <!-- <a href="#" class="btn btn-primary btn-white btn-big-fonts ml-md-5">Request for Quote</a> -->
+                            
                         </div>
                     </div>
                 </div>
@@ -66,24 +63,13 @@
                                     <h3>QUICK LINKS</h3>
                                 </div>
                                 <ul>
-                                    <li><a href="{{url('/')}}/product-category">Products</a></li>
-                                    <li><a href="{{url('/')}}/manufacturers">Manufacturers</a></li>
-                                    <li><a href="{{url('/')}}/industry">Market Segments</a></li>
-                                    <li><a href="{{url('/')}}/service">Services</a></li>
-                                    <li><a href="{{url('/')}}/about">About Us</a></li>
+                                    <li><a href="{{route('product_category','electromechanical-components')}}">Products</a></li>
+                                    <li><a href="{{route('manufacturers')}}">Manufacturers</a></li>
+                                    <li><a href="{{route('industry')}}">Market Segments</a></li>
+                                    <li><a href="{{route('Services')}}">Services</a></li>
+                                    <li><a href="{{route('About')}}">About Us</a></li>
                                 </ul>
                             </div>
-                            <!-- <div class="footer-links">
-                                <div class="footer-header">
-                                    <h3>NEWS & UPDATES</h3>
-                                </div>
-                                <ul>
-                                    <li><a href="{{url('/')}}">Company Updates</a></li>
-                                    <li><a href="{{url('/')}}">Events</a></li>
-                                    <li><a href="{{url('/')}}">New Product</a></li>
-                                    <li><a href="{{url('/')}}">Press Release</a></li>
-                                </ul>
-                            </div> -->
                             <div class="footer-links">
                                 <div class="footer-header">
                                     <h3>Contact Us</h3>

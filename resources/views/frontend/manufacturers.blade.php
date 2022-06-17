@@ -104,7 +104,7 @@
                     Want a copy for your files?
                 </h4>
             </div>
-            <a href="{{url('/')}}/uploads/line-card-files/line-card.PDF" download class="download-files"><img class="svgImg" src="{{url('/')}}assets/frontend/08-01assets/imagesdownload-icon.svg" alt="Download"> Download our Line Card</a>
+            <a href="{{url('/')}}/uploads/line-card-files/line-card.PDF" download class="download-files"><img class="svgImg" src="{{url('/')}}/assets/frontend/assets/images/download-icon.svg" alt="Download"> Download our Line Card</a>
         </div>
         </div>
         </div>

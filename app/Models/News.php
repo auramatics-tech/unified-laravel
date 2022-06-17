@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class News extends Model{
     protected $table = "news";
     protected $fillable = [
-        'name ',
-        'description ',
-        'image ',
-        'document ',
-        'news_for ',
-        'associate_value ',
+        'name',
+        'description',
+        'image',
+        'document',
+        'news_for',
+        'associate_value',
     ];
 }

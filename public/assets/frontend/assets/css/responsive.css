@@ -205,7 +205,7 @@
     }
     .filter-category .filtered-bar .product-table {
         padding: 0px;
-		margin-top:0;
+		margin-top: 8px;
     }
     .filter-category .filtered-bar .product-table .table tbody td p {
         line-height: 19px;

@@ -1,8 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
         <section class="home-hero-section">
             <div class="container-fluid p-0">
                 <div class="row m-0">
@@ -50,7 +48,7 @@
                                                     <div class="col-md-8">
                                                         <h2>Extensive network of products and suppliers</h2>
                                                         <p>No matter the requirements and specifications, Unified finds the best components and suppliers for any industry undertaking</p>
-                                                        <a href="{{route('cart')}}" class="btn btn-primary btn-white btn-big-fonts  mt-5">Submit quote</a>
+                                                        <a href="{{route('cart')}}" class="btn btn-primary btn-white btn-big-fonts mt-5">Submit quote</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -461,7 +459,7 @@
                                             </li>
                                         </ul>
                                         <p>{{ $news->description}}</p>
-                                        <a href="">Learn more <img class="svgImg" src="{{asset('assets/frontend/assets/images/left-aerrow.svg')}}" alt="Left"></a>
+                                        <a href="{{ route('news',$news->id)}}">Learn more <img class="svgImg" src="{{asset('assets/frontend/assets/images/left-aerrow.svg')}}" alt="Left"></a>
                                     </div>
                                 </div>
                                 @endforeach

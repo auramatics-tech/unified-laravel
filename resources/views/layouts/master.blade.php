@@ -46,9 +46,9 @@
         <!-- End Footer -->
         <!-- JS Global Compulsory -->
         <script defer src="{{asset('assets/frontend/assets/vender/bootstrap/js/bootstrap.min.js')}}"></script>
-        <!-- Swiper js -->
-        @yield('script')
+  
         <script defer src="{{asset('assets/frontend/assets/vender/swiper/js/swiper.min.js')}}"></script>
+        
         <!--Fancybox -->
         <script defer src="{{asset('assets/frontend/assets/vender/fancybox/js/jquery.fancybox.min.js')}}"></script>
         <!--DATATABLE -->
@@ -64,7 +64,9 @@
         {{--<script defer src="{{url('/')}}/js/jquery.validate.min.js"></script>
         <!-- JS Front -->
         <script defer src="{{asset('assets/frontend/assets/js/custom.js}}"></script>--}}
-        
+         <!-- Swiper js -->
+         @yield('script')
+         
         {{-- Zoho chat integration --}}
         <script defer type="text/javascript" id="zsiqchat">
             var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || 
@@ -72,7 +74,7 @@
             var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;
             s.src="https://salesiq.zoho.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);
         </script>
-                <script defer src="https://unified.co.in/theme/frontend/assets/js/custom.js"></script>
+                <script defer src="{{url('/')}}/assets/frontend/assets/js/custom.js"></script>
                         <script>
             $(document).ready(function() {
                 $('.disableRightClick').bind('contextmenu', function(e) {
@@ -95,13 +97,16 @@
                             quantity = input_quantity;
                         }
                         $.ajax({
-                            url: 'https://unified.co.in/add/cart',
+                            url: "{{route('add_cart')}}",
                             type: 'POST',
-                            data: jQuery.param({ quatity: quantity, product_id : product_id}) ,
-                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                            data: { quatity: quantity, product_id : product_id,"_token":"{{csrf_token()}}"} ,
                             success: function (response) {
                                 if(response.status == 'success') {
                                     var count = parseInt($('#cart_count').text()) + 1;
+                                    if(!count)
+                                    {
+                                        count = 1;
+                                    }
                                     $('#cart_count').text(count);
                                     alert('Product added to cart.');
                                 }
@@ -118,11 +123,11 @@
                     source: function( request, response ) {
                         // Fetch data
                         $.ajax({
-                            url: "https://unified.co.in/search/item",
+                            url: "{{url('/')}}/search/item",
                             type: 'post',
-                            dataType: "json",
                             data: {
-                                searchByValue: request.term
+                                searchByValue: request.term,
+                                "_token=":"{{csrf_token()}}"
                             },
                             success: function( data ) {
                                 response($.map(data.status, function (item) {
@@ -163,9 +168,9 @@
                     var search_type = $('#selected-search-type').val();
                     if(selected_product_id) {
                         if(search_type == 'product') {
-                            window.location.href = "https://unified.co.in/product-detail/"+selected_product_id;
+                            window.location.href = "{{url('/')}}/product-detail/"+selected_product_id;
                         } else {
-                            window.location.href = "https://unified.co.in/manufacturer-detail/"+selected_product_id;
+                            window.location.href = "{{url('/')}}/manufacturer-detail/"+selected_product_id;
                         }
                     }
                 }) 
@@ -194,11 +199,12 @@
                     var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
                     if(email != '' && email != null && pattern.test(email)) {
                         $.ajax({
-                            url: "https://unified.co.in/subscribe/user",
+                            url: "{{url('/')}}/subscribe_user",
                             type: 'post',
                             dataType: "json",
                             data: {
                                 email: email,
+                                "_token":"{{csrf_token()}}"
                             },
                             success: function( data ) {
                                 if(data.status == 1) {
@@ -226,6 +232,7 @@
             var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;
             s.src="https://salesiq.zoho.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);
         </script>
+             
     </body>
 
 </html>

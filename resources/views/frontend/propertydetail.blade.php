@@ -10,6 +10,7 @@
                 </div>
             </div>
         </section>
+
         <section class="small-section manufactures-detail">
             <div class="container">
                 <div class="row">
@@ -29,8 +30,8 @@
                 </div>
             </div>
         </section>
-        @if($subCategories)
-
+       
+        @if(count($subCategories))
         <section class="section bg-muted">
             <div class="container">
                 <div class="row">
@@ -53,14 +54,10 @@
                                 <div class="swiper-slide">
                                     <div class="featuredProducts-wrap">
                                         <div class="image-wrap">
-                                            <img src=" @if(isset($subCategory->image) && !empty($subCategory->image)) 
-                                                    {{url('/')}}/uploads/prodcutcategory/{{$subCategory->image}}
-                                                @else 
-                                                    {{url('/')}}/theme/frontend/assets/images/no-images.png
-                                                @endif                                          " alt="Power & Energy">
+                                            <img src="{{isset($subCategory->image) ? asset('uploads/prodcutcategory/'.$subCategory->image) : asset('uploads/prodcutcategory/no-images-resize.png')}}" alt="Power & Energy">
                                         </div>
                                         <div class="product-info">
-                                            <a href="javascript:void(0);" class="nav-link product_filter" data-id="{{$subCategory->id}}">{{ $subCategory->name }}</a>
+                                            <a href="{{route('product_list')}}" target="_blank" class="nav-link product_filter">{{ $subCategory->name }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +96,7 @@
                                                 <img src="@if(!empty($downloadResourcesAsset->thumbnail))
                                                     {{url('/')}}/uploads/manufacturer/{{$downloadResourcesAsset->thumbnail}}
                                                 @else
-                                                    {{url('/')}}/theme/frontend/assets/images/no-images-resize.png
+                                                    {{url('/')}}/assets/frontend/assets/images/no-images-resize.png
                                                 @endif                                         " alt="{{ $downloadResourcesAsset->label }}">
                                             </div>
                                             <div class="product-info">
@@ -215,18 +212,18 @@
         </section>
         @endif
     </main>
-    <form method="POST" target="_blank" class="productFilterForm" action="">
+    <form method="get" target="_blank" class="productFilterForm" action="">
         <input type="hidden" id="filterByProductCategory" name="filterByProductCategory[]"/>
         <input type="hidden" id="filterByManufacturer" name="filterByManufacturer[]" value="{{$manufacturer->id}}"/>
     </form>
 
     <script>
         $(document).ready(function(){
-            $('.product_filter').on('click', function() {
-                    $('#filterByProductCategory').val(parseInt($(this).attr('data-id')));
-                    $('#filterByProductsSubCategory').attr('disabled', true);
-                    $('.productFilterForm').submit();
-            })
+            // $('.product_filter').on('click', function() {
+            //         $('#filterByProductCategory').val(parseInt($(this).attr('data-id')));
+            //         $('#filterByProductsSubCategory').attr('disabled', true);
+            //         $('.productFilterForm').submit();
+            // })
         })
     </script>
 @endsection

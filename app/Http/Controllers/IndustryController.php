@@ -12,4 +12,8 @@ class IndustryController extends Controller
     public function industry(){
         return view('frontend.industry');
     }
+    public function industry_detail(Request $request, $name){
+        $name = $name;
+        return view('frontend.industry-detail');
+    }
 }
